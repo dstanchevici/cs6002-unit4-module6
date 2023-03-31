@@ -9,8 +9,8 @@ public class TowerOfHanoi {
 	solveHanoi (2, 0, 1);
 
 	// 4-disk puzzle  
-	//System.out.println ("4-Disk solution: ");
-	//solveHanoi (3, 0, 1);
+	System.out.println ("4-Disk solution: ");
+	solveHanoi (3, 0, 1);
 	
     }
 
