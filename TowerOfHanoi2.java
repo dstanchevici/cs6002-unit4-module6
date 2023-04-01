@@ -1,20 +1,35 @@
-// 4.6.3
+// 4.6.3 and 4.6.4
+// Note for 4.6.4 printTowers() in move () is commented out. Also commented out are 3-disk and 4-disk options in main().
 
 import java.util.*;
 
 public class TowerOfHanoi2 {
 
     static Stack<Integer>[] towers;
+    static int numMoves;
     
     public static void main (String[] argv)
     {
+
+	/*
 	// 3-disk puzzle
 	System.out.println ("3-Disk solution: ");
 	solveHanoi (2, 0, 1);
+	
 
 	// 4-disk puzzle  
 	System.out.println ("4-Disk solution: ");
 	solveHanoi (3, 0, 1);
+	*/
+	
+	// n-disk puzzle
+	System.out.println ("---------------");
+	int n = 20; //Max number of disks
+	for (int i=1; i<=n; i++) {
+	    numMoves = 0;
+	    solveHanoi (i-1, 0, 1);
+	    System.out.println ("n=" + i + " moves=" + numMoves);
+	}
 	
     }
 
@@ -31,7 +46,7 @@ public class TowerOfHanoi2 {
 	    towers[0].add (k); // Should it be push(k)?
 	}
 	
-	printTowers ();
+	//printTowers ();
 
 	solveHanoiRecursive (n, i, j);
     }
@@ -54,13 +69,13 @@ public class TowerOfHanoi2 {
 
     static void move (int n, int i, int j)
     {
+	if (!towers[i].isEmpty()) {
+	    towers[j].push (towers[i].pop());
+	    numMoves ++;
+	}
 	
-	Integer disk = towers[i].pop ();
-	
-	towers[j].push (disk);
-	
-	System.out.println ("Towers after moving " + n + " from tower " + i + " to tower " + j);
-	printTowers ();
+	//System.out.println ("Towers after moving " + n + " from tower " + i + " to tower " + j);
+	//printTowers ();
 	
     }
 
